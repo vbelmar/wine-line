@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.navbar nav a {
+    margin: 0 1em;
+    text-decoration: none;
+    color: #222;
+}
+
+.cart-icon {
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+.hero {
+    position: relative;
+    background: url('wine-background.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 6em 2em;
+    text-align: left;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.hero a {
+    background-color: #f4e19c;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.8em 1.5em;
+    margin-top: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.expertise {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #eae8e8;    ;
+}
+
+.expertise h2 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.expertise img {
+    max-width: 750px;
+}
+
+
+.products {
+    padding: 3em 2em;
+    text-align: center;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.product {
+    border: 2px solid #727171;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.how-it-works {
+    padding: 3em 2em;
+    text-align: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.divider {
+    height: 3px;
+    background-color: #727171;
+    margin: 2em 0;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.dudas {
+    background: url(wine-background2.png);
+    background-size: cover;
+    background-position: center;
+    padding: 8em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dudas a {
+    background-color: #f4e19c;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.8em 1.5em;
+    margin-top: 1em;
+    border-radius: 20px;
+    cursor: pointer;
+    scale: 1.2;
+    text-decoration: none;
+}
+
+.dudas h2 {
+    font-size: 2em;
+    text-align: center;
+    color: white;
+}
+
+.contacto {
+    margin-left: 40px;
+    padding-bottom: 2em;
+}
+
+.datos {
+    margin-left: 10px;
+}
+
+.proyecto {
+    margin-top: 3em;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.proyecto_nos {
+    margin-top: 3em;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.9em;
+}

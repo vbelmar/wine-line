@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Pedidos</title>
+        <link rel="stylesheet" href="styles_order.css"/>
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+    <body>
+        <!-- Navbar from index.html -->
+        <header class="navbar">
+            <img src="logo.jpg" class="logo" alt="Logo">
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="lista.html">Pedidos</a>
+                <a href="empresa.html">Nuestra empresa</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <a href="order.html" class="cart-icon">🛒</a>
+        </header>
+
+        <!-- Hero section from index.html -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Realiza tu Pedido</h1>
+                <p>Selecciona los vinos que deseas y la cantidad para crear tu pedido personalizado.</p>
+            </div>
+        </section>
+
+        <main>
+            <div class="order">
+                <form>
+                    <div class="bottle_selection">
+                        <table class="bottle-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="tipo">TIPO</th>
+                                    <th>PRECIO</th>
+                                    <th class="cantidad_column">CANTIDAD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bottle_row">
+                                    <td><img src="tinto_caro.png" alt="tinto_caro"/></td>
+                                    <td>GRAN CAPITANA</td>
+                                    <td>25.62€</td>
+                                    <td><input type="number" min="0" max="100" class="quantity_input" placeholder="Cantidad"/></td>
+                                </tr>
+                                <tr class="bottle_row">
+                                    <td><img src="blanco_caro.png" alt="blanco_caro"/></td>
+                                    <td>VINO DE LA CASA</td>
+                                    <td>19.61€</td>
+                                    <td><input type="number" min="0" max="100" class="quantity_input" placeholder="Cantidad"/></td>
+                                </tr>
+                                <tr class="bottle_row">
+                                    <td><img src="tinto_barato.png" alt="tinto_barato"/></td>
+                                    <td>PEQUEÑA CRIANZA</td>
+                                    <td>4.47€</td>
+                                    <td><input type="number" min="0" max="100" class="quantity_input" placeholder="Cantidad"/></td>
+                                </tr>
+                                <tr class="bottle_row">
+                                    <td><img src="blanco_barato.png" alt="blanco_barato"/></td>
+                                    <td>LA TRUCHA</td>
+                                    <td>2.58€</td>
+                                    <td><input type="number" min="0" max="100" class="quantity_input" placeholder="Cantidad"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="order_button" id="order_button">Realizar pedido</button>
+                        <button type="button" class="cancel_button" onclick="window.location.href='index.html'">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="proyecto">
+                <p>Proyecto de PR2 grupo A7</p>
+            </div>
+        </main>
+    </body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sendOrderButton = document.getElementById("order_button");
+    
+      sendOrderButton.addEventListener("click", async () => {
+        const rows = document.querySelectorAll(".bottle-table tbody tr");
+        const order = [];
+    
+        rows.forEach(row => {
+          const qty = parseInt(row.querySelector(".quantity_input").value, 10) || 0;
+          if (qty > 0) {
+            const tipo = row.querySelector("td:nth-child(2)").textContent.trim();
+            order.push({ tipo, cantidad: qty });
+          }
+        });
+    
+        try {
+          const res = await fetch("http://localhost:3000/api/order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ order })
+          });
+    
+          const result = await res.json();
+          if (!res.ok) throw new Error(result.message || "Error al registrar el pedido");
+    
+          alert("✅ ¡Gracias por su pedido!");
+          console.log("Response:", result);
+        } catch (err) {
+          console.error("❌ Error enviando el pedido:", err);
+          alert("Error al enviar el pedido: " + err.message);
+        }
+      });
+    });
+</script>

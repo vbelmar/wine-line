@@ -1,0 +1,121 @@
+/* styles_order.css - Styling for the order page */
+
+/* Main container for the order form */
+.order {
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Bottle selection table */
+.bottle_selection {
+    margin: 2em 0;
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.bottle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    border-radius: 8px;
+}
+
+.bottle-table th {
+    background-color: #f8e8ae;
+    height: 24px;
+    color: #333;
+    padding: 12px 15px;
+    font-size: 1.2em;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.bottle-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.bottle_row:hover {
+    background-color: #f9f9f9;
+}
+
+.bottle-table img {
+    height: 60px;
+    width: auto;
+}
+
+.quantity_input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.tipo {
+    min-width: 100px;
+}
+
+.cantidad_column {
+    min-width: 120px;
+}
+
+/* Button styles */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 2em;
+    scale: 1.2;
+}
+
+.order_button {
+    background-color: #f8e8ae;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.order_button:hover {
+    background-color: #e9d375;
+}
+
+.cancel_button {
+    background-color: #eee;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancel_button:hover {
+    background-color: #ddd;
+}
+
+/* Project footer */
+.proyecto {
+    margin-top: 3em;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* Remove header that's no longer needed since we use the navbar */
+.header {
+    display: none;
+}
+
+/* Ensuring our order styles work with the main site styles */
+main {
+    margin-top: 2em;
+}

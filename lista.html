@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Pedidos</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles_list.css"/>
+  <style>
+    .toggle-icon {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+    .items-details {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar from index.html -->
+  <header class="navbar">
+    <img src="logo.jpg" class="logo" alt="Logo">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="lista.html">Pedidos</a>
+      <a href="empresa.html">Nuestra empresa</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <a href="order.html" class="cart-icon">🛒</a>
+  </header>
+
+  <!-- Hero section from index.html -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Lista de Pedidos</h1>
+      <p>Administra y visualiza todos los pedidos realizados en Wine Line.</p>
+    </div>
+  </section>
+
+  <div class="list-container">
+    <div class="table-container">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+        <tbody id="orderList">
+          <!-- Rows go here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="proyecto">
+    <p>Proyecto de PR2 grupo A7</p> 
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/orders");
+        const data = await res.json();
+
+        const orderList = document.getElementById('orderList');
+        orderList.innerHTML = '';
+
+        data.orders.forEach((order, index) => {
+          const row = document.createElement('tr');
+
+          const idCell = document.createElement('td');
+          idCell.textContent = order.id;
+
+          const fechaCell = document.createElement('td');
+          fechaCell.textContent = new Date(order.fecha_pedido).toLocaleString();
+
+          const estadoCell = document.createElement('td');
+          estadoCell.innerHTML = `<span class="status-dot ${order.estado === 'completado' ? 'green' : 'red'}"></span>${order.estado}`;
+
+          const toggleCell = document.createElement('td');
+          toggleCell.innerHTML = `<img src="align-justify.svg" alt="Ver detalles" class="toggle-icon" data-index="${index}">`;
+
+          const itemsRow = document.createElement('tr');
+          itemsRow.className = 'items-details';
+          itemsRow.innerHTML = `
+            <td colspan="4">
+              <ul>
+                ${(order.items || []).map(item => `<li>${item.wine_type} x${item.quantity}</li>`).join('')}
+              </ul>
+            </td>
+          `;
+
+          toggleCell.querySelector('img').addEventListener('click', () => {
+            itemsRow.style.display = itemsRow.style.display === 'none' ? 'table-row' : 'none';
+          });
+
+          row.appendChild(idCell);
+          row.appendChild(fechaCell);
+          row.appendChild(estadoCell);
+          row.appendChild(toggleCell);
+
+          orderList.appendChild(row);
+          orderList.appendChild(itemsRow);
+        });
+      } catch (err) {
+        console.error('Error fetching orders:', err);
+      }
+    });
+  </script>
+</body>
+</html>

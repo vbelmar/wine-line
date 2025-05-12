@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Empresa</title>
+    <link rel="stylesheet" href="styles_empresa.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="logo.jpg" class="logo" alt="Logo">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="lista.html">Pedidos</a>
+            <a href="empresa.html">Nuestra empresa</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <a href="order.html" class="cart-icon">🛒</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Wine Line</h1>
+            <p>"En Wine Line gestionamos de forma integral tus pedidos de vino: ofrecemos una cuidada selección de botellas —desde opciones accesibles hasta etiquetas exclusivas— y nos encargamos del embotellado y empaquetado para que cada pedido llegue a tu puerta con la mejor calidad."</p>
+            <a href="order.html">Haz tu primer pedido</a>
+        </div>
+    </section>
+
+    <section class="expertise">
+        <h2>DESCRIPCIÓN DEL PROCESO</h2>
+        <p>En nuestra empresa  implementamos la última tecnología en procesos automatizados, especializados en el taponado de diferentes tipos de botellas de vino, específicamente de rosca y de corcho, para posteriormente empaquetarlas en diferentes cajas.  Estas cajas son personalizadas dependiendo del pedido que el cliente escoja por la página web.</p>
+    </section>
+
+    <section class="how-it-works">
+        <h2>FUNCIONAMIENTO</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>PASO 1</h3>
+                <p>Pides por la web, se guarda en base de datos y llega a la planta la información. En cada cinta llegan las botellas que el cliente ha pedido, por un lado de gama alta y por otro lado de gama baja.</p>
+            </div>
+            <div class="step">
+                <h3>PASO 2</h3>
+                <p> Con una ESP32S3 con cámara lee el código QR que estas botellas tienen para que el robot UR5e que coloca los tapones (uno por cada cinta) sepa qué tipo de tapón debe colocar cuando llegue la botella.</p>
+            </div>
+            <div class="step">
+                <h3>PASO 3</h3>
+                <p>Después del taponado, las botellas de ambas cintas llegan al alcance de otro robot UR10e el cual coge las botellas de 2 en 2 y las empaqueta en cajas, las cuales están en otra cinta. Y por último se envían las cajas a los compradores.</p>
+            </div>
+        </div>
+    </section>
+    <hr class="divider">
+    <section class="herramientas">
+        <h2>HERRAMIENTAS UTILIZADAS</h2>
+        <div class="tool">
+            <p>Herramienta de taponado de tapones enroscados de botella de gama alta</p>
+            <img src="destornillador.png" alt="Destornillador">
+        </div>
+        <div class="tool">
+            <p>Herramienta de taponado de tapones de corcho de botella de gama baja</p>
+            <img src="corchador.png" alt="Destornillador">
+        </div>
+        <div class="tool">
+            <p>Herramienta de ventosas para empaquetado de botellas de vino</p>
+            <img src="ventosas.jpg" alt="Robot" class="robot">
+        </div>
+    </section>
+    <div class="proyecto">
+        <p>Proyecto de PR2 grupo A7</p>
+    </div>
+</body>
+</html>

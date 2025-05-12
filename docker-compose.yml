@@ -1,0 +1,31 @@
+
+services:
+  db:
+    image: bitnami/postgresql:latest
+    container_name: postgres-db
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=4916
+      - POSTGRESQL_DATABASE=GDI
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/bitnami/postgresql
+
+  backend:
+    build: .
+    container_name: node-backend
+    environment:
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=4916
+      - DB_NAME=GDI
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:
